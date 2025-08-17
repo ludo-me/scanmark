@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Scanner | Attendance System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f8fdf8;
+            text-align: center;
+            padding: 30px;
+            color: #2c3e50;
+        }
+
+        video {
+            width: 100%;
+            max-width: 400px;
+            margin-top: 20px;
+            border: 2px solid #228b22;
+            border-radius: 10px;
+        }
+
+        button {
+            background: #228b22;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background: #006400;
+            transform: scale(1.02);
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: darkgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>QR Code Scanner</h2>
+    <p>Click below to start scanning.</p>
+
+    <button onclick="startScan()">Start Scan</button>
+
+    <video id="preview"></video>
+    <p id="result"></p>
+
+    <!-- Include QR Scanner library -->
+    <script src="https://unpkg.com/html5-qrcode"></script>
+
+    <script>
+        let scanner;
+
+        function startScan() {
+            const html5QrCode = new Html5Qrcode("preview");
+
+            html5QrCode.start(
+                { facingMode: "environment" }, // Rear camera
+                {
+                    fps: 10,
+                    qrbox: 250
+                },
+                qrCodeMessage => {
+                    document.getElementById("result").innerText =
+                        "QR Code detected: " + qrCodeMessage;
+
+                    // Stop scanning once a code is found
+                    html5QrCode.stop().then(() => {
+                        console.log("Scanning stopped");
+                    }).catch(err => console.error("Failed to stop scanning", err));
+                },
+                errorMessage => {
+                    // You can ignore scanning errors
+                }
+            ).catch(err => {
+                console.error("Unable to start scanning", err);
+            });
+        }
+    </script>
+</body>
+
+</html>
