@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Attendance System</title>
+    <style>
+        /* Base styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #2c3e50;
+            background: #f8fdf8;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 2px solid #e6f2e6;
+            background: linear-gradient(90deg, #006400, #228b22);
+            color: white;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        header img {
+            background: white;
+            padding: 5px;
+            border-radius: 10px;
+            position: absolute;
+            left: 20px;
+            height: 50px;
+            width: auto;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        /* Login card */
+        .login-container {
+            width: 400px;
+            margin: 50px auto;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0, 100, 0, 0.15);
+            border-radius: 12px;
+            background: white;
+            border: 1px solid #d9f2d9;
+            transition: transform 0.3s ease;
+        }
+
+        .login-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .login-container h2 {
+            text-align: center;
+            color: #006400;
+            margin-bottom: 20px;
+        }
+
+        /* Form elements */
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cce5cc;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-color: #228b22;
+            box-shadow: 0 0 6px rgba(34, 139, 34, 0.2);
+        }
+
+        /* Buttons */
+        button {
+            background: #228b22;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            width: 100%;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background: #006400;
+            transform: scale(1.02);
+        }
+
+        /* Extra section */
+        .extra-section {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .extra-section p {
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .extra-section button {
+            width: auto;
+            padding: 10px 20px;
+            background: white;
+            border: 2px solid #228b22;
+            color: #228b22;
+            font-weight: 600;
+        }
+
+        .extra-section button:hover {
+            background: #228b22;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <!-- Replace the src with the official FUNAAB logo file -->
+        <img src="funaab-logo-green.png" alt="FUNAAB Logo">
+        <h1>University Attendance System</h1>
+    </header>
+
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div>
+                <label>Matric No.</label>
+                <input type="text" required>
+            </div>
+            <div>
+                <label>Password</label>
+                <input type="password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+
+        <p>To <b>mark</b> attendance, <b>scan</b> QR code after logging in.</p>
+        <div class="extra-section">
+            <button onclick="#">Web Scanner</button>
+        </div>
+    </div>
+
+    <script>
+        function showScanner() {
+            alert("Scanner would open here in a real implementation. For now, we'll mock it.");
+
+            // Mock QR scanning
+            const mockQR = "lecture123|2023-11-15T10:00:00|2023-11-15T12:00:00";
+            const confirmed = confirm(`Mock scan detected lecture. Mark attendance?`);
+
+            if (confirmed) {
+                alert("Attendance marked successfully!");
+            }
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Mock authentication
+            alert("Login successful! Redirecting to scanner...");
+
+            // Redirect to scanner page
+            window.location.href = "scanner.html";
+        });
+
+    </script>
+</body>
+
+</html>
